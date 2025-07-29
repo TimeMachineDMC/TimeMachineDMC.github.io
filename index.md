@@ -4,15 +4,14 @@ author_profile: true
 ---
 
 ## 👋 About Me
-Hi, I'm **TimeMachineDMC**, a Computer Science undergraduate at **Your University**.  
+Hi, I'm **TimeMachineDMC**, a Computer Science undergraduate at **Beijing University of Posts and Telecommunications**.  
 I enjoy coding, exploring AI, and developing full-stack web projects.
 
 ---
 
 ## 🛠 Skills
-- **Languages:** Python, C++, Java, JavaScript  
-- **Frameworks:** React, Spring Boot, PyTorch  
-- **Tools:** Git, Docker, Linux, MySQL
+- **Languages:** C++, Python, C# 
+- **Frameworks:** PyTorch, Flask  
 
 ---
 
