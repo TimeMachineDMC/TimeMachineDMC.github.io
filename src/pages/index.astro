@@ -11,9 +11,9 @@ import Section from '@/components/home/Section.astro'
 import SkillLayout from '@/components/home/SkillLayout.astro'
 import config from '@/site-config'
 
-const languages = ['Html', 'JavaScript', 'CSS', 'Shell']
-const frontend = ['TypeScript', 'Vite', 'Webpack', 'Astro']
-const backend = ['Vercel', 'Waline']
+const Programming = ['TypeScript', 'Vite', 'Webpack', 'Astro']
+const Tools = ['Vercel', 'Waline']
+const Other = ['Vercel', 'Waline']
 
 const MAX_POSTS = 10
 const allPosts = await getBlogCollection()
@@ -35,19 +35,19 @@ if (!images[imagePath])
       <Image
         src={images[imagePath]()}
         alt={config.logo.alt || 'Profile'}
-        class='h-28 w-auto rounded-full border p-1'
+        class='h-28 w-auto rounded-full border p-1 shadow-sm'
         loading='eager'
         fetchpriority='high'
       />
 
       <div class='flex flex-col items-center gap-y-4'>
-        <h1 class='text-3xl font-medium'>{config.author}</h1>
+        <h1 class='text-3xl font-medium tracking-tight'>{config.author}</h1>
         <div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
-          <Label title='中国 北京'>
+          <Label title='中国 · 北京'>
             <Icon name='location' class='size-5' slot='icon' />
           </Label>
           <Label
-            title='Github'
+            title='GitHub'
             as='a'
             href='https://github.com/TimeMachineDMC'
             target='_blank'
@@ -57,29 +57,20 @@ if (!images[imagePath])
         </div>
       </div>
 
-      {/* Get template */}
-      <a
-        href='https://github.com/cworld1/astro-theme-pure'
-        target='_blank'
-        class='flex flex-row items-center gap-x-3 rounded-full border bg-background px-4 py-2 text-sm shadow-sm transition-shadow hover:shadow-md'
-      >
-        <span class='relative flex items-center justify-center'>
-          <span
-            class='absolute size-2 animate-ping rounded-full border border-green-400 bg-green-400 opacity-75'
-          ></span>
-          <span class='size-2 rounded-full bg-green-400'></span>
-        </span>
-        <p class='font-medium text-muted-foreground'>Get Template</p>
-      </a>
+      {/* 核心格言展示 - 替代原有的 Get Template 按钮 */}
+      <div class="flex flex-col items-center gap-y-2 mt-2">
+        <p class="text-sm text-muted-foreground font-medium tracking-widest uppercase">這一路都是風景</p>
+        <div class="h-[1px] w-8 bg-border"></div>
+        <p class="text-sm text-muted-foreground font-medium tracking-widest uppercase">我穿越森林灯红酒绿</p>
+      </div>
     </section>
 
     <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
       <Section title='About'>
         <p class='text-muted-foreground'>Developer / Designer</p>
-        <p class='text-muted-foreground'>
-          Lorem ipsum dolor sit amet, vidit suscipit at mei. Quem denique mea id. Usu ei regione
-          indoctum dissentiunt, cu meliore fuisset mei, vel quod voluptua ne. Ex dicat impedit mel,
-          at eum oratio possit voluptatum.
+        <p class='text-muted-foreground leading-relaxed'>
+          目前就读于 <b>北京邮电大学 (BUPT)</b> 计算机学院计算机科学与技术专业。
+          我的研究兴趣集中在 <b>具身智能 (Embodied AI)</b> 和 <b>大语言模型 (LLM)</b> 。
         </p>
         <Button title='More about me' class='w-fit self-end' href='/about' variant='ahead' />
       </Section>
@@ -130,10 +121,10 @@ if (!images[imagePath])
       <Section title='Education'>
         <Card
           as='a'
-          heading='Lorem ipsum'
-          subheading='Lorem ipsum dolor sit amet, vidit suscipit at mei.'
-          date='August 2021 - July 2025'
-          href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+          heading='北京邮电大学'
+          subheading='计算机科学与技术'
+          date='September 2023 - Present'
+          href='https://www.bupt.edu.cn'
         >
           {
             /* <ul class='ms-4 list-disc text-muted-foreground'>
@@ -176,20 +167,10 @@ if (!images[imagePath])
         </div>
       </Section>
 
-      <Section title='Certifications'>
-        <Card
-          as='a'
-          heading='Lorem ipsum'
-          subheading='Lorem ipsum dolor sit amet, vidit suscipit at mei. Quem denique mea id. Usu ei regione indoctum dissentiunt, cu meliore fuisset mei, vel quod voluptua ne. Ex dicat impedit mel, at eum oratio possit voluptatum. Dicat ceteros cu vim. Impetus fuisset ullamcorper pri cu, his posse iisque ad, aliquam honestatis usu id.'
-          date='July 2024'
-          href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-        />
-      </Section>
-
       <Section title='Skills'>
-        <SkillLayout title='Languages' skills={languages} />
-        <SkillLayout title='Frontend' skills={frontend} />
-        <SkillLayout title='Backend' skills={backend} />
+        <SkillLayout title='Programming' skills={Programming} />
+        <SkillLayout title='Tools' skills={Tools} />
+        <SkillLayout title='Other' skills={Other} />
       </Section>
     </div>
     <Quote class='mt-12' />
