@@ -11,9 +11,9 @@ import Section from '@/components/home/Section.astro'
 import SkillLayout from '@/components/home/SkillLayout.astro'
 import config from '@/site-config'
 
-const Programming = ['TypeScript', 'Vite', 'Webpack', 'Astro']
-const Tools = ['Vercel', 'Waline']
-const Other = ['Vercel', 'Waline']
+const Programming = ['C++', 'Python', 'C#', 'JS']
+const Tools = ['VSCode', 'Codex']
+const Other = ['Markdown', 'LaTeX', 'Git']
 
 const MAX_POSTS = 10
 const allPosts = await getBlogCollection()
@@ -59,7 +59,7 @@ if (!images[imagePath])
 
       {/* 核心格言展示 - 替代原有的 Get Template 按钮 */}
       <div class="flex flex-col items-center gap-y-2 mt-2">
-        <p class="text-sm text-muted-foreground font-medium tracking-widest uppercase">這一路都是風景</p>
+        <p class="text-sm text-muted-foreground font-medium tracking-widest uppercase">这一路都是风景</p>
         <div class="h-[1px] w-8 bg-border"></div>
         <p class="text-sm text-muted-foreground font-medium tracking-widest uppercase">我穿越森林灯红酒绿</p>
       </div>
@@ -69,8 +69,9 @@ if (!images[imagePath])
       <Section title='About'>
         <p class='text-muted-foreground'>Developer / Designer</p>
         <p class='text-muted-foreground leading-relaxed'>
-          目前就读于 <b>北京邮电大学 (BUPT)</b> 计算机学院计算机科学与技术专业。
-          我的研究兴趣集中在 <b>具身智能 (Embodied AI)</b> 和 <b>大语言模型 (LLM)</b> 。
+          目前就读于 <b>北京邮电大学 (BUPT)</b> 计算机科学与技术专业。
+          我目前的研究兴趣集中在 <b>具身智能 (Embodied AI)</b> / <b>大语言模型 (Large Language Model)</b> 。
+          我的远期目标是开创个人先锋时尚品牌。
         </p>
         <Button title='More about me' class='w-fit self-end' href='/about' variant='ahead' />
       </Section>
@@ -89,35 +90,6 @@ if (!images[imagePath])
         )
       }
 
-      {
-        /* <Section title='Experience'>
-      <Card
-        heading='Lorem Ipsum'
-        subheading='Sit amet consectetur'
-        date='Dec 2022 - Nov 2023'
-        imagePath='/src/assets/about-astro.png'
-        altText='Lorem, ipsum dolor sit'
-        imageClass='h-12 w-auto md:-start-16'
-      >
-        <ul class='ms-4 list-disc text-muted-foreground'>
-          <li>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore debitis recusandae, ut
-            molestiae laboriosam pariatur!
-
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, pariatur!</li>
-          </li>
-        </ul>
-      </Card>
-      <Card
-        heading='Lorem Ipsum'
-        subheading='Sit amet consectetur'
-        date='Dec 2022 - Nov 2023'
-        imagePath='/src/assets/about-astro.png'
-        altText='Lorem, ipsum dolor sit'
-        imageClass='h-12 w-auto md:-start-16'
-      />
-    </Section> */
-      }
       <Section title='Education'>
         <Card
           as='a'
@@ -138,30 +110,30 @@ if (!images[imagePath])
         </Card>
       </Section>
 
-      <Section title='Website List'>
+      <Section title='Projects'>
         <div class='grid grid-cols-1 gap-3 sm:grid-cols-2'>
           <ProjectCard
-            href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-            heading='Lorem ipsum'
-            subheading='Do not go gentle into that good night'
-            imagePath='/src/assets/projects/1.avif'
+            href='https://github.com/TimeMachineDMC/TBC'
+            heading='具身智能科研 · 𝔼𝕘𝕠𝔻𝕖𝕩-𝕋𝕒𝕔'
+            subheading='基于 <b>H-RDT</b> 框架与 <b>EgoDex</b> 模型，探索机械臂与灵巧手的协同控制'
+            imagePath='/src/assets/projects/LinkerHand.png'
           />
           <ProjectCard
-            href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-            heading='Lorem ipsum'
-            subheading='Old age burn and rave at close of day'
-            imagePath='/src/assets/projects/2.avif'
+            href='https://github.com/TimeMachineDMC/AutoVisionCartX-NUS25summer'
+            heading='视觉智能车 · 𝑨𝒖𝒕𝒐𝑽𝒊𝒔𝒊𝒐𝒏𝑪𝒂𝒓𝒕 𝑿'
+            subheading='基于 <b>YOLOv8</b> 和 Whisper 的多目标识别与自动驾驶车'
+            imagePath='/src/assets/projects/AutoVisionCartX.png'
           />
           <ProjectCard
-            href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-            heading='Lorem ipsum'
-            subheading='Rage, rage against the dying of the light'
-            imagePath='/src/assets/projects/3.avif'
+            href='https://github.com/TimeMachineDMC/zyd-web'
+            heading='法财 AI 决策引擎 · 𝕁𝕦𝕤𝕥𝕚𝕥𝕚𝕒'
+            subheading='为法律与金融分析设计的 RAG 架构系统'
+            imagePath='/src/assets/projects/Justitia.png'
           />
           <ProjectCard
-            href='/projects'
-            heading='More projects'
-            subheading='Check out more projects'
+            href='https://github.com/TimeMachineDMC/Code11982'
+            heading='BUPT 本科课程项目总览 · 𝑪𝒐𝒅𝒆𝟏𝟏𝟗𝟖𝟐'
+            subheading='本科期间各个课程的课程设计、实验、上机作业'
             imagePath='/src/assets/projects/4.avif'
           />
         </div>
@@ -173,6 +145,10 @@ if (!images[imagePath])
         <SkillLayout title='Other' skills={Other} />
       </Section>
     </div>
-    <Quote class='mt-12' />
+
+{/* 底部装饰，不再使用动态加载的 Quote 以免显示 Loading */}
+    <footer class="mt-20 pb-10 text-center border-t border-border pt-8 w-full max-w-2xl">
+        <p class="text-xs text-muted-foreground tracking-[0.2em]">DANIL'S INK • 2026</p>
+    </footer>
   </main>
 </PageLayout>
