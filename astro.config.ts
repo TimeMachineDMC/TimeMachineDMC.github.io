@@ -26,7 +26,6 @@ import config from './src/site.config.ts'
 export default defineConfig({
   // [Basic]
   site: 'https://timemachinedmc.github.io',
-  base: '/Danil-Ink',
   // Deploy to a sub path
   // https://astro-pure.js.org/docs/setup/deployment#platform-with-base-path
   // base: '/astro-pure/',
