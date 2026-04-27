@@ -3,7 +3,7 @@ import type { CardListData, Config, IntegrationUserConfig, ThemeUserConfig } fro
 export const theme: ThemeUserConfig = {
   // [Basic]
   /** Title for your website. Will be used in metadata and as browser tab title. */
-  title: 'Danil\'s Ink',
+  title: "Danil's Ink",
   /** Will be used in index page & copyright declaration */
   author: '𝑫𝒂𝒏𝒊𝒍',
   /** Description metadata for your website. Can be used in page metadata. */
@@ -35,23 +35,16 @@ export const theme: ThemeUserConfig = {
   npmCDN: 'https://cdn.jsdelivr.net/npm',
 
   // Still in test
-  head: [
-    /* Telegram channel */
-    // {
-    //   tag: 'meta',
-    //   attrs: { name: 'telegram:channel', content: '@cworld0_cn' },
-    //   content: ''
-    // }
-  ],
+  head: [],
   customCss: [],
 
   /** Configure the header of your site. */
   header: {
     menu: [
-      // { title: 'Blog', link: '/blog' },
-      // { title: 'Projects', link: '/projects' },
-      // { title: 'Links', link: '/links' },
-      // { title: 'About', link: '/about' }
+      { title: 'Blog', link: '/blog/' },
+      { title: 'Projects', link: '/projects/' },
+      { title: 'Links', link: '/links/' },
+      { title: 'About', link: '/about/' }
     ]
   },
 
@@ -64,12 +57,12 @@ export const theme: ThemeUserConfig = {
       // Privacy Policy link
       {
         title: 'Site Policy',
-        link: '/terms',
+        link: '/terms/',
         pos: 2 // position set to 2 will be appended to copyright line
       }
     ],
     /** Enable displaying a “Astro & Pure theme powered” link in your site’s footer. */
-    credits: true,
+    credits: false,
     /** Optional details about the social media accounts for this site. */
     social: [
       { icon: 'github', label: 'GitHub', href: 'https://github.com/TimeMachineDMC' },
@@ -96,14 +89,14 @@ export const theme: ThemeUserConfig = {
 }
 
 export const integ: IntegrationUserConfig = {
-  // [Links] - 已清空内容，建议配合在 header.menu 中删除该入口
+  // [Links]
   links: {
     logbook: [],
     applyTip: [],
     cacheAvatar: false
   },
   // [Search]
-  pagefind: true,
+  pagefind: false,
   // [Quote] - 这里的 target 现已改为显示你的个人格言，不再请求外部 API
   quote: {
     server: '',
@@ -132,9 +125,7 @@ export const integ: IntegrationUserConfig = {
 // Terms 模块已精简为仅保留版权说明
 export const terms: CardListData = {
   title: 'Site Policy',
-  list: [
-    { title: 'Copyright', link: '/terms/copyright' }
-  ]
+  list: [{ title: 'Copyright', link: '/terms/copyright/' }]
 }
 
 const config = { ...theme, integ } as Config

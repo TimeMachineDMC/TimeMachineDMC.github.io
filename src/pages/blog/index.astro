@@ -1,0 +1,55 @@
+---
+import { Button, FormattedDate } from 'astro-pure/user'
+import PageLayout from '@/layouts/BaseLayout.astro'
+import { getPublishedBlogPosts } from '@/utils/blog'
+
+const posts = await getPublishedBlogPosts()
+
+const meta = {
+  description: 'Research notes, project logs, and personal writing by Danil.',
+  title: 'Blog'
+}
+---
+
+<PageLayout {meta}>
+  <Button title='Back' href='/' variant='back' />
+  <main class='mt-6 lg:mt-10'>
+    <div id='content-header' class='animate'>
+      <h1 class='mb-4 mt-6 text-3xl font-medium sm:mt-10'>Blog</h1>
+      <p class='max-w-2xl text-muted-foreground'>
+        Notes on embodied AI, large language models, engineering practice, and the ideas I want to
+        keep thinking with.
+      </p>
+    </div>
+
+    <section id='content' class='animate mt-10'>
+      {
+        posts.length > 0 ? (
+          <ul class='flex flex-col gap-y-4 text-start'>
+            {posts.map((post) => (
+              <li>
+                <a
+                  class='block rounded-xl border bg-background px-5 py-4 no-underline transition-colors hover:bg-muted'
+                  href={`/blog/${post.id}/`}
+                >
+                  <FormattedDate
+                    class='text-xs text-muted-foreground'
+                    date={post.data.publishDate}
+                  />
+                  <h2 class='my-2 text-lg font-medium text-foreground'>{post.data.title}</h2>
+                  <p class='my-0 text-sm text-muted-foreground'>{post.data.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div class='rounded-xl border bg-background px-5 py-4'>
+            <p class='my-0 text-muted-foreground'>
+              No posts yet. This space is ready for your research notes and essays.
+            </p>
+          </div>
+        )
+      }
+    </section>
+  </main>
+</PageLayout>

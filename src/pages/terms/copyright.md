@@ -2,9 +2,11 @@
 layout: '@/layouts/IndividualPage.astro'
 
 title: 'Copyright'
-description: 'Effective date: 2024-11-26'
+description: 'Copyright notice for Danil’s Ink'
 language: 'En'
-back: '/terms/list'
+back: '/terms/'
 ---
 
-It may be recommended to generate policies from [PolicyMaker.io](https://policymaker.io).
+Unless otherwise noted, all original text, images, and project notes on this site belong to Danil.
+
+Open source code and third-party assets keep their original licenses.

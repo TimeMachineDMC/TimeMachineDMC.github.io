@@ -1,9 +1,9 @@
 ---
 import { Font } from 'astro:assets'
+import config from 'virtual:config'
 
 import { prod } from 'astro-pure/server'
 import type { SiteMeta } from 'astro-pure/types'
-import config from 'virtual:config'
 
 type Props = SiteMeta
 
@@ -15,7 +15,10 @@ const socialImageURL = new URL(ogImage ? ogImage : config.socialCard, Astro.url)
 ---
 
 <meta charset='utf-8' />
-<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover' name='viewport' />
+<meta
+  content='width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover'
+  name='viewport'
+/>
 <meta content='IE=edge' http-equiv='X-UA-Compatible' />
 <title>{siteTitle}</title>
 
@@ -90,9 +93,7 @@ const socialImageURL = new URL(ogImage ? ogImage : config.socialCard, Astro.url)
   /* User script*/
   prod && (
     <script>
-      console.log( '%c Astro Theme Pure %c https://github.com/cworld1/astro-theme-pure/',
-      'color:#fff;background:linear-gradient(90deg,#448bff,#44e9ff);padding:5px 0;',
-      'color:#000;background:linear-gradient(90deg,#44e9ff,#ffffff);padding:5px 10px 5px 0px;' )
+      console.log("%c Danil's Ink ", 'color:#fff;background:#111827;padding:5px 10px;')
     </script>
   )
 }

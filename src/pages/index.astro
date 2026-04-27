@@ -2,12 +2,12 @@
 import { Image } from 'astro:assets'
 
 import { PostPreview } from 'astro-pure/components/pages'
-import { getBlogCollection, sortMDByDate } from 'astro-pure/server'
 import { Button, Card, Icon, Label } from 'astro-pure/user'
 import PageLayout from '@/layouts/BaseLayout.astro'
 import ProjectCard from '@/components/home/ProjectCard.astro'
 import Section from '@/components/home/Section.astro'
 import SkillLayout from '@/components/home/SkillLayout.astro'
+import { getPublishedBlogPosts } from '@/utils/blog'
 import config from '@/site-config'
 
 const Programming = ['C++', 'Python', 'C#', 'JS']
@@ -15,8 +15,7 @@ const Tools = ['VSCode', 'Codex']
 const Other = ['Markdown', 'LaTeX', 'Git']
 
 const MAX_POSTS = 10
-const allPosts = await getBlogCollection()
-const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
+const allPostsByDate = (await getPublishedBlogPosts()).slice(0, MAX_POSTS)
 
 const imagePath = config.logo.src
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -30,8 +29,7 @@ if (!images[imagePath])
     `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,avif,webp}"`
   )
 const buptLogo = projectImages['/src/assets/projects/bupt-logo.png']
-if (!buptLogo)
-  throw new Error('"bupt-logo.png" does not exist in glob: "src/assets/projects/*"')
+if (!buptLogo) throw new Error('"bupt-logo.png" does not exist in glob: "src/assets/projects/*"')
 ---
 
 <PageLayout meta={{ title: 'Home' }} highlightColor='#659EB9'>
@@ -51,41 +49,38 @@ if (!buptLogo)
           <Label title='中国 · 北京'>
             <Icon name='location' class='size-5' slot='icon' />
           </Label>
-          <Label
-            title='GitHub'
-            as='a'
-            href='https://github.com/TimeMachineDMC'
-            target='_blank'
-          >
+          <Label title='GitHub' as='a' href='https://github.com/TimeMachineDMC' target='_blank'>
             <Icon name='github' class='size-5' slot='icon' />
           </Label>
         </div>
       </div>
 
       {/* 核心格言展示 - 替代原有的 Get Template 按钮 */}
-      <div class="flex flex-col items-center gap-y-2 mt-2">
-        <p class="text-sm text-muted-foreground font-medium tracking-widest uppercase">这一路都是风景</p>
-        <div class="h-[1px] w-8 bg-border"></div>
-        <p class="text-sm text-muted-foreground font-medium tracking-widest uppercase">我穿越森林灯红酒绿</p>
+      <div class='flex flex-col items-center gap-y-2 mt-2'>
+        <p class='text-sm text-muted-foreground font-medium tracking-widest uppercase'>
+          这一路都是风景
+        </p>
+        <div class='h-[1px] w-8 bg-border'></div>
+        <p class='text-sm text-muted-foreground font-medium tracking-widest uppercase'>
+          我穿越森林灯红酒绿
+        </p>
       </div>
     </section>
 
     <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
       <Section title='About'>
         <p class='text-muted-foreground'>Developer / Designer</p>
-        <p class='text-muted-foreground leading-relaxed'>
-          你好，我是 Danil。
-        </p>
+        <p class='text-muted-foreground leading-relaxed'>你好，我是 Danil。</p>
         <p class='text-muted-foreground leading-relaxed'>
           就读于 <b>北京邮电大学 (BUPT)</b> 计算机科学与技术专业。
         </p>
         <p class='text-muted-foreground leading-relaxed'>
-          我目前的研究兴趣集中在 <b>具身智能 (Embodied AI)</b> / <b>大语言模型 (Large Language Model)</b> 。
+          我目前的研究兴趣集中在 <b>具身智能 (Embodied AI)</b> / <b
+            >大语言模型 (Large Language Model)</b
+          > 。
         </p>
-        <p class='text-muted-foreground leading-relaxed'>
-          远期目标是开创个人先锋时尚品牌。
-        </p>
-        <Button title='More about me' class='w-fit self-end' href='/about' variant='ahead' />
+        <p class='text-muted-foreground leading-relaxed'>远期目标是开创个人先锋时尚品牌。</p>
+        <Button title='More about me' class='w-fit self-end' href='/about/' variant='ahead' />
       </Section>
       {
         allPostsByDate.length > 0 && (
@@ -97,7 +92,7 @@ if (!buptLogo)
                 </li>
               ))}
             </ul>
-            <Button title='More posts' class='w-fit self-end' href='/blog' variant='ahead' />
+            <Button title='More posts' class='w-fit self-end' href='/blog/' variant='ahead' />
           </Section>
         )
       }
@@ -110,22 +105,15 @@ if (!buptLogo)
           date='September 2023 - Present'
           href='https://www.bupt.edu.cn'
         >
-          <div class='absolute right-[-10%] top-[-10%] w-40 h-40 pointer-events-none select-none transition-transform duration-500 group-hover:scale-110'>
+          <div
+            class='absolute right-[-10%] top-[-10%] w-40 h-40 pointer-events-none select-none transition-transform duration-500 group-hover:scale-110'
+          >
             <Image
               src={buptLogo()}
-              alt='BUPT Logo' 
-              class='w-full h-full object-contain opacity-[0.08] dark:opacity-[0.1] grayscale dark:invert' 
+              alt='BUPT Logo'
+              class='w-full h-full object-contain opacity-[0.08] dark:opacity-[0.1] grayscale dark:invert'
             />
           </div>
-          {
-            /* <ul class='ms-4 list-disc text-muted-foreground'>
-          <li>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore debitis recusandae, ut
-            molestiae laboriosam pariatur!
-          </li>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, pariatur!</li>
-        </ul> */
-          }
         </Card>
       </Section>
 
@@ -165,9 +153,9 @@ if (!buptLogo)
       </Section>
     </div>
 
-{/* 底部装饰，不再使用动态加载的 Quote 以免显示 Loading */}
-    <footer class="mt-20 pb-10 text-center border-t border-border pt-8 w-full max-w-2xl">
-        <p class="text-xs text-muted-foreground tracking-[0.2em]">DANIL'S INK • 2026</p>
+    {/* 底部装饰，不再使用动态加载的 Quote 以免显示 Loading */}
+    <footer class='mt-20 pb-10 text-center border-t border-border pt-8 w-full max-w-2xl'>
+      <p class='text-xs text-muted-foreground tracking-[0.2em]'>DANIL'S INK • 2026</p>
     </footer>
   </main>
 </PageLayout>
