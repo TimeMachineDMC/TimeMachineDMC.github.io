@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets'
 
-import { Quote } from 'astro-pure/advanced'
 import { PostPreview } from 'astro-pure/components/pages'
 import { getBlogCollection, sortMDByDate } from 'astro-pure/server'
 import { Button, Card, Icon, Label } from 'astro-pure/user'
@@ -23,10 +22,16 @@ const imagePath = config.logo.src
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/*.{jpeg,jpg,png,gif,avif,webp}'
 )
+const projectImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/projects/*.{jpeg,jpg,png,gif,avif,webp}'
+)
 if (!images[imagePath])
   throw new Error(
     `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,avif,webp}"`
   )
+const buptLogo = projectImages['/src/assets/projects/bupt-logo.png']
+if (!buptLogo)
+  throw new Error('"bupt-logo.png" does not exist in glob: "src/assets/projects/*"')
 ---
 
 <PageLayout meta={{ title: 'Home' }} highlightColor='#659EB9'>
@@ -106,8 +111,8 @@ if (!images[imagePath])
           href='https://www.bupt.edu.cn'
         >
           <div class='absolute right-[-10%] top-[-10%] w-40 h-40 pointer-events-none select-none transition-transform duration-500 group-hover:scale-110'>
-            <img 
-              src='/src/assets/projects/bupt-logo.png' 
+            <Image
+              src={buptLogo()}
               alt='BUPT Logo' 
               class='w-full h-full object-contain opacity-[0.08] dark:opacity-[0.1] grayscale dark:invert' 
             />
