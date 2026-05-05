@@ -1,0 +1,90 @@
+---
+import { Button, Card, Icon, Label } from 'astro-pure/user'
+import PageLayout from '@/layouts/CommonPage.astro'
+
+const playlistUrl = 'https://music.163.com/#/playlist?id=14339169477'
+const playlistEmbedUrl =
+  'https://music.163.com/outchain/player?type=0&id=14339169477&auto=0&height=430'
+
+const headings = [
+  { depth: 2, slug: 'devices', text: 'Devices' },
+  { depth: 2, slug: 'music', text: 'Music' },
+  { depth: 2, slug: 'fashion', text: 'Fashion' },
+  { depth: 2, slug: 'notes', text: 'Notes' }
+]
+
+const devices = [
+  {
+    name: 'iPhone 17 Pro Max',
+    detail: 'Daily phone'
+  },
+  {
+    name: "MacBook Air M5 15''",
+    detail: 'Portable workstation'
+  },
+  {
+    name: 'AirPods Pro 3',
+    detail: 'Listening and focus'
+  },
+  {
+    name: 'iPad',
+    detail: 'Reading, sketching, and notes'
+  }
+]
+---
+
+<PageLayout title='Life' {headings}>
+  <p>
+    这里放一些更接近日常的东西：设备、音乐、时尚、灵感和审美偏好。它不会抢走主页的
+    简洁感，但会让这个网站更像一个完整的人。
+  </p>
+
+  <h2 id='devices'>Devices</h2>
+  <div class='not-prose grid gap-3 sm:grid-cols-2'>
+    {
+      devices.map((device) => (
+        <Card heading={device.name} subheading={device.detail}>
+          <div class='mt-2 flex items-center text-sm text-muted-foreground'>
+            <Icon name='computer' class='me-2 size-4' />
+            Personal setup
+          </div>
+        </Card>
+      ))
+    }
+  </div>
+
+  <h2 id='music'>Music</h2>
+  <Card
+    heading='网易云音乐个人歌单'
+    subheading='把一段时间里的情绪、节奏和画面收在一起。'
+    date='Playlist · 14339169477'
+  >
+    <div class='mt-3 flex flex-wrap gap-3'>
+      <Label title='NetEase Cloud Music'>
+        <Icon name='netease' class='size-5' slot='icon' />
+      </Label>
+      <Button title='Open playlist' href={playlistUrl} target='_blank' variant='ahead' />
+    </div>
+  </Card>
+  <div class='not-prose mt-4 overflow-hidden rounded-xl border bg-background'>
+    <iframe
+      title='Danil NetEase Cloud Music playlist'
+      src={playlistEmbedUrl}
+      class='border-0'
+      width='100%'
+      height='450'
+      loading='lazy'></iframe>
+  </div>
+
+  <h2 id='fashion'>Fashion</h2>
+  <p>
+    我会在这里逐渐记录关于服装、廓形、材质、品牌语言和个人先锋时尚品牌的想法。现在先
+    保持一个干净的位置，之后可以扩展成 moodboard、look archive 或设计札记。
+  </p>
+
+  <h2 id='notes'>Notes</h2>
+  <p>
+    Life 页面可以继续增加摄影、电影、阅读、旅行、桌面设置等小节。每一个标题只要在
+    <code>src/pages/life/index.astro</code> 里补一段内容，就会成为这个页面的一部分。
+  </p>
+</PageLayout>
