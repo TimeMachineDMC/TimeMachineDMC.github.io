@@ -1,11 +1,47 @@
 ---
-title: 'Draft Template'
-publishDate: '2026-04-27'
-description: 'Copy this file to start a new post.'
+title: '通用文章模板'
+publishDate: '2026-05-06'
+description: '一个可直接替换内容的通用博客草稿模板。'
 tags: []
 language: 'zh-CN'
 draft: true
 comment: false
 ---
 
-Write your post here.
+## 开场
+
+[用一两段写清楚这篇文章为什么值得记录。]
+
+### 核心问题
+
+- [问题 1]
+- [问题 2]
+- [问题 3]
+
+## 背景
+
+[补充时间、地点、项目、作品、情绪或知识背景。]
+
+### 关键词
+
+- [关键词]
+- [关键词]
+- [关键词]
+
+## 正文
+
+### 第一部分
+
+[填入正文。]
+
+### 第二部分
+
+[填入正文。]
+
+### 第三部分
+
+[填入正文。]
+
+## 结尾
+
+[写下结论、未完成的问题、下一步行动。]

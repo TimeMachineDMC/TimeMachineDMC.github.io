@@ -10,6 +10,11 @@ const headings = [
   { depth: 2, slug: 'devices', text: 'Devices' },
   { depth: 2, slug: 'music', text: 'Music' },
   { depth: 2, slug: 'fashion', text: 'Fashion' },
+  { depth: 2, slug: 'literature', text: 'Literature' },
+  { depth: 2, slug: 'film', text: 'Film' },
+  { depth: 2, slug: 'games', text: 'Games' },
+  { depth: 2, slug: 'brands', text: 'Brands' },
+  { depth: 2, slug: 'gallery', text: 'Gallery' },
   { depth: 2, slug: 'notes', text: 'Notes' }
 ]
 
@@ -31,12 +36,82 @@ const devices = [
     detail: 'Reading, sketching, and notes'
   }
 ]
+
+const literatureCards = [
+  {
+    heading: '阅读札记',
+    subheading: '小说、散文、诗歌、批评与作者脉络。',
+    date: 'Template · Works / Quotes / Motifs'
+  },
+  {
+    heading: '句子收藏',
+    subheading: '保留值得反复看的语言、意象和节奏。',
+    date: 'Template · Excerpts / Feelings / Revisit'
+  }
+]
+
+const filmCards = [
+  {
+    heading: '观影记录',
+    subheading: '片名、导演、年份、镜头、声音和余味。',
+    date: 'Template · Watch log'
+  },
+  {
+    heading: '影像参考',
+    subheading: '色彩、构图、服装、空间和人物气质。',
+    date: 'Template · Visual references'
+  }
+]
+
+const gameCards = [
+  {
+    heading: '游戏体验',
+    subheading: '机制、关卡、叙事、手感和美术方向。',
+    date: 'Template · Play notes'
+  },
+  {
+    heading: '设计拆解',
+    subheading: '把好玩的瞬间拆成规则、反馈和节奏。',
+    date: 'Template · Mechanics / Systems'
+  }
+]
+
+const fashionCards = [
+  {
+    heading: '造型档案',
+    subheading: '廓形、层次、材质、配色和穿着场景。',
+    date: 'Template · Look archive'
+  },
+  {
+    heading: '品牌语言',
+    subheading: '从标识、秀场、面料到叙事的一套气质。',
+    date: 'Template · Brand language'
+  }
+]
+
+const brandCards = [
+  {
+    heading: '先锋品牌研究',
+    subheading: '研究可借鉴的品牌世界观、视觉系统和产品线。',
+    date: 'Template · Identity / Product / Campaign'
+  },
+  {
+    heading: '个人品牌草图',
+    subheading: '记录未来个人先锋时尚品牌的关键词和边界。',
+    date: 'Template · Manifesto / Audience / Silhouette'
+  }
+]
+
+const gallerySlots = [
+  { title: '城市', desc: '街道、建筑、夜色、路过的光。' },
+  { title: '物件', desc: '设备、衣料、书页、桌面细节。' },
+  { title: '人物', desc: '姿态、轮廓、情绪和瞬间。' },
+  { title: '灵感', desc: 'moodboard、截图、橱窗与色彩。' }
+]
 ---
 
 <PageLayout title='Life' {headings}>
-  <p>
-    这里是一些更接近日常的东西：设备、音乐、时尚、灵感和审美偏好。
-  </p>
+  <p>这里是一些更接近日常的东西：设备、音乐、时尚、灵感和审美偏好。</p>
 
   <h2 id='devices'>Devices</h2>
   <div class='not-prose grid gap-3 sm:grid-cols-2'>
@@ -53,11 +128,7 @@ const devices = [
   </div>
 
   <h2 id='music'>Music</h2>
-  <Card
-    heading='歌单'
-    subheading='最值得欣赏的街头流行。'
-    date='Playlist · VividCycle'
-  >
+  <Card heading='歌单' subheading='最值得欣赏的街头流行。' date='Playlist · VividCycle'>
     <div class='mt-3 flex flex-wrap gap-3'>
       <Label title='NetEase Cloud Music'>
         <Icon name='netease' class='size-5' slot='icon' />
@@ -76,12 +147,84 @@ const devices = [
   </div>
 
   <h2 id='fashion'>Fashion</h2>
+  <div class='not-prose grid gap-3 sm:grid-cols-2'>
+    {
+      fashionCards.map((item) => (
+        <Card heading={item.heading} subheading={item.subheading} date={item.date} />
+      ))
+    }
+  </div>
   <p>
-    我会在这里逐渐记录关于服装、廓形、材质、品牌语言和个人先锋时尚品牌的想法。之后扩展成 moodboard、look archive 或设计札记。
+    我会在这里逐渐记录关于服装、廓形、材质、品牌语言和个人先锋时尚品牌的想法。之后扩展成
+    moodboard、look archive 或设计札记。
   </p>
+
+  <h2 id='literature'>Literature</h2>
+  <p>
+    文学部分适合放阅读感受、摘句、主题索引和作者笔记。它可以更私人，也可以更像一个缓慢生长的资料库。
+  </p>
+  <div class='not-prose grid gap-3 sm:grid-cols-2'>
+    {
+      literatureCards.map((item) => (
+        <Card heading={item.heading} subheading={item.subheading} date={item.date} />
+      ))
+    }
+  </div>
+
+  <h2 id='film'>Film</h2>
+  <p>
+    电影部分先保留观影记录和影像参考两个方向，之后可以扩展导演专题、年度片单、镜头截图和服装分析。
+  </p>
+  <div class='not-prose grid gap-3 sm:grid-cols-2'>
+    {
+      filmCards.map((item) => (
+        <Card heading={item.heading} subheading={item.subheading} date={item.date} />
+      ))
+    }
+  </div>
+
+  <h2 id='games'>Games</h2>
+  <p>游戏部分可以记录真正玩过的体验，也可以拆解机制、界面、关卡和世界观，把娱乐变成设计观察。</p>
+  <div class='not-prose grid gap-3 sm:grid-cols-2'>
+    {
+      gameCards.map((item) => (
+        <Card heading={item.heading} subheading={item.subheading} date={item.date} />
+      ))
+    }
+  </div>
+
+  <h2 id='brands'>Brands</h2>
+  <p>品牌部分用来存放未来时尚品牌的研究材料：从别人的品牌语言，到你自己的宣言、轮廓和受众。</p>
+  <div class='not-prose grid gap-3 sm:grid-cols-2'>
+    {
+      brandCards.map((item) => (
+        <Card heading={item.heading} subheading={item.subheading} date={item.date} />
+      ))
+    }
+  </div>
+
+  <h2 id='gallery'>Gallery</h2>
+  <p>
+    照片画廊先用四个位置固定结构：城市、物件、人物、灵感。之后可以把每个位置换成真实照片和短说明。
+  </p>
+  <div class='not-prose grid gap-3 sm:grid-cols-2'>
+    {
+      gallerySlots.map((slot) => (
+        <figure class='my-0 overflow-hidden rounded-xl border bg-muted'>
+          <div class='flex aspect-[4/3] items-center justify-center border-b bg-background text-sm text-muted-foreground'>
+            Photo slot · {slot.title}
+          </div>
+          <figcaption class='px-4 py-3'>
+            <h3 class='my-0 text-base font-medium'>{slot.title}</h3>
+            <p class='my-1 text-sm text-muted-foreground'>{slot.desc}</p>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
 
   <h2 id='notes'>Notes</h2>
   <p>
-    继续增加摄影、电影、阅读、旅行、桌面设置等小节。
+    继续增加摄影、旅行、展览、桌面设置、房间布置、香水、餐厅、城市漫游等小节。这里的每一块都可以先是模板，再慢慢替换成具体经历。
   </p>
 </PageLayout>
