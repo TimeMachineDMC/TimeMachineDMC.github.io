@@ -11,6 +11,7 @@
     "check": "astro check",
     "new:blog": "node scripts/new-blog.mjs",
     "blog:import": "node scripts/import-blog.mjs",
+    "content:check": "node scripts/check-site-content.mjs",
     "publish": "node scripts/publish-site.mjs",
     "astro": "astro",
     "pure": "astro-pure",

@@ -1,38 +1,71 @@
 ---
+import type { IconsType } from 'astro-pure/types'
 import { Button, Icon, Label } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
 
-const headings = [
-  { depth: 2, slug: 'profile', text: 'Profile' },
-  { depth: 2, slug: 'research', text: 'Research' },
-  { depth: 2, slug: 'direction', text: 'Direction' }
-]
+import about from '../../../content-site/about.json'
+
+type AboutLabel = {
+  title: string
+  icon: IconsType
+  href?: string
+}
+
+type AboutSection = {
+  id: string
+  title: string
+  paragraphs: string[]
+  labels?: AboutLabel[]
+}
+
+type AboutAction = {
+  title: string
+  href: string
+  variant: 'ahead' | 'back'
+}
+
+const sections = about.sections as AboutSection[]
+const actions = about.actions as AboutAction[]
+const headings = sections.map((section) => ({
+  depth: 2,
+  slug: section.id,
+  text: section.title
+}))
 ---
 
-<PageLayout title='About' {headings}>
-  <h2 id='profile'>Profile</h2>
-  <p>
-    你好，我是 Danil，北京邮电大学计算机科学与技术专业本科生。这个主页会逐步沉淀我的研究、工程项目、学习记录和一些审美上的尝试。
-  </p>
-  <div class='not-prose my-5 flex flex-wrap gap-3'>
-    <Label title='中国 · 北京'>
-      <Icon name='location' class='size-5' slot='icon' />
-    </Label>
-    <Label title='GitHub' as='a' href='https://github.com/TimeMachineDMC' target='_blank'>
-      <Icon name='github' class='size-5' slot='icon' />
-    </Label>
+<PageLayout title={about.title} {headings}>
+  {
+    sections.map((section) => (
+      <>
+        <h2 id={section.id}>{section.title}</h2>
+        {section.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+
+        {section.labels?.length && (
+          <div class='not-prose my-5 flex flex-wrap gap-3'>
+            {section.labels.map((label) =>
+              label.href ? (
+                <Label title={label.title} as='a' href={label.href} target='_blank'>
+                  <Icon name={label.icon} class='size-5' slot='icon' />
+                </Label>
+              ) : (
+                <Label title={label.title}>
+                  <Icon name={label.icon} class='size-5' slot='icon' />
+                </Label>
+              )
+            )}
+          </div>
+        )}
+      </>
+    ))
+  }
+
+  <div class='not-prose flex flex-wrap gap-3'>
+    {
+      actions.map((action) => (
+        <Button title={action.title} class='w-fit' href={action.href} variant={action.variant} />
+      ))
+    }
   </div>
-
-  <h2 id='research'>Research</h2>
-  <p>
-    我目前关注具身智能、机器人控制、大语言模型，以及模型在真实任务中的可靠执行能力。
-    我希望把算法、系统和可触摸的机器连接起来，而不只停留在 demo。
-  </p>
-
-  <h2 id='direction'>Direction</h2>
-  <p>
-    长期目标是把技术能力、设计能力和个人先锋时尚品牌的想象力放在同一条线上生长。
-  </p>
-
-  <Button title='View projects' class='w-fit' href='/projects/' variant='ahead' />
 </PageLayout>

@@ -1,0 +1,42 @@
+{
+  "title": "About",
+  "sections": [
+    {
+      "id": "profile",
+      "title": "Profile",
+      "paragraphs": [
+        "你好，我是 Danil，北京邮电大学计算机科学与技术专业本科生。这个主页会逐步沉淀我的研究、工程项目、学习记录和一些审美上的尝试。"
+      ],
+      "labels": [
+        {
+          "title": "中国 · 北京",
+          "icon": "location"
+        },
+        {
+          "title": "GitHub",
+          "icon": "github",
+          "href": "https://github.com/TimeMachineDMC"
+        }
+      ]
+    },
+    {
+      "id": "research",
+      "title": "Research",
+      "paragraphs": [
+        "我目前关注具身智能、机器人控制、大语言模型，以及模型在真实任务中的可靠执行能力。我希望把算法、系统和可触摸的机器连接起来，而不只停留在 demo。"
+      ]
+    },
+    {
+      "id": "direction",
+      "title": "Direction",
+      "paragraphs": ["长期目标是把技术能力、设计能力和个人先锋时尚品牌的想象力放在同一条线上生长。"]
+    }
+  ],
+  "actions": [
+    {
+      "title": "View projects",
+      "href": "/projects/",
+      "variant": "ahead"
+    }
+  ]
+}

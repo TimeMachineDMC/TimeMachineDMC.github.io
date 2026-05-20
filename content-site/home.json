@@ -1,0 +1,85 @@
+{
+  "hero": {
+    "highlightColor": "#659EB9",
+    "location": "中国 · 北京",
+    "links": [
+      {
+        "title": "GitHub",
+        "href": "https://github.com/TimeMachineDMC",
+        "icon": "github"
+      }
+    ],
+    "taglines": ["这一路都是风景", "我穿越森林灯红酒绿"]
+  },
+  "about": {
+    "role": "Developer / Designer",
+    "paragraphs": [
+      "你好，我是 Danil。",
+      "就读于 <b>北京邮电大学 (BUPT)</b> 计算机科学与技术专业。",
+      "我目前的研究兴趣集中在 <b>具身智能 (Embodied AI)</b> / <b>大语言模型 (Large Language Model)</b>。",
+      "远期目标是开创个人先锋时尚品牌。"
+    ],
+    "action": {
+      "title": "More about me",
+      "href": "/about/"
+    }
+  },
+  "education": [
+    {
+      "heading": "北京邮电大学",
+      "subheading": "计算机科学与技术",
+      "date": "September 2023 - Present",
+      "href": "https://www.bupt.edu.cn",
+      "logoImage": "/src/assets/projects/bupt-logo.png",
+      "logoAlt": "BUPT Logo"
+    }
+  ],
+  "music": {
+    "heading": "歌单",
+    "subheading": "最值得欣赏的街头流行。",
+    "date": "Playlist · NetEase Cloud Music",
+    "playlistUrl": "https://music.163.com/#/playlist?id=14339169477",
+    "lifeUrl": "/life/"
+  },
+  "projects": [
+    {
+      "href": "https://github.com/TimeMachineDMC/TBC",
+      "heading": "具身智能科研 · 𝔼𝕘𝕠𝔻𝕖𝕩-𝕋𝕒𝕔",
+      "subheading": "基于 H-RDT 框架与 EgoDex 模型，探索机械臂与灵巧手的协同控制",
+      "imagePath": "/src/assets/projects/LinkerHand.png"
+    },
+    {
+      "href": "https://github.com/TimeMachineDMC/AutoVisionCartX-NUS25summer",
+      "heading": "视觉智能车 · 𝑨𝒖𝒕𝒐𝑽𝒊𝒔𝒊𝒐𝒏𝑪𝒂𝒓𝒕 𝑿",
+      "subheading": "基于 YOLOv8 和 Whisper 的多目标识别与自动驾驶车",
+      "imagePath": "/src/assets/projects/AutoVisionCartX.png"
+    },
+    {
+      "href": "https://github.com/TimeMachineDMC/zyd-web",
+      "heading": "法财 AI 引擎 · 𝕁𝕦𝕤𝕥𝕚𝕥𝕚𝕒",
+      "subheading": "为法律与金融分析设计的 RAG 架构模型",
+      "imagePath": "/src/assets/projects/Justitia.png"
+    },
+    {
+      "href": "https://github.com/TimeMachineDMC/Code11982",
+      "heading": "BUPT 本科课程项目总览 · 𝑪𝒐𝒅𝒆𝟏𝟏𝟗𝟖𝟐",
+      "subheading": "本科期间各个课程的课程设计、实验",
+      "imagePath": "/src/assets/projects/4.avif"
+    }
+  ],
+  "skills": [
+    {
+      "title": "Programming",
+      "skills": ["C++", "Python", "C#", "JS"]
+    },
+    {
+      "title": "Tools",
+      "skills": ["VSCode", "Codex"]
+    },
+    {
+      "title": "Other",
+      "skills": ["Markdown", "LaTeX", "Git"]
+    }
+  ],
+  "footerText": "DANIL'S INK • 2026"
+}

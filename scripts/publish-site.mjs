@@ -3,6 +3,7 @@ import { spawnSync } from 'node:child_process'
 const message = process.argv.slice(2).join(' ').trim() || 'Update site content'
 
 run('node', ['scripts/import-blog.mjs'])
+run('node', ['scripts/check-site-content.mjs'])
 run('git', ['pull', '--rebase', '--autostash', '--ff-only'])
 run('npm', ['run', 'build'])
 run('git', ['add', '-A'])

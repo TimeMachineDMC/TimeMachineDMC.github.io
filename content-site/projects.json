@@ -1,0 +1,62 @@
+{
+  "title": "Projects",
+  "intro": ["项目总览。"],
+  "groups": [
+    {
+      "id": "research",
+      "title": "Research",
+      "projects": [
+        {
+          "image": "LinkerHand.png",
+          "name": "EgoDex-Tac",
+          "description": "基于 H-RDT 框架与 EgoDex 模型，探索机械臂与灵巧手的协同控制。",
+          "links": [
+            {
+              "type": "github",
+              "href": "https://github.com/TimeMachineDMC/TBC"
+            }
+          ]
+        },
+        {
+          "image": "AutoVisionCartX.png",
+          "name": "AutoVisionCart X",
+          "description": "基于 YOLOv8 和 Whisper 的多目标识别与自动驾驶车项目。",
+          "links": [
+            {
+              "type": "github",
+              "href": "https://github.com/TimeMachineDMC/AutoVisionCartX-NUS25summer"
+            }
+          ]
+        },
+        {
+          "image": "Justitia.png",
+          "name": "Justitia",
+          "description": "为法律与金融分析设计的 RAG 架构模型。",
+          "links": [
+            {
+              "type": "github",
+              "href": "https://github.com/TimeMachineDMC/zyd-web"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "coursework",
+      "title": "Coursework",
+      "projects": [
+        {
+          "image": "4.avif",
+          "name": "Code11982",
+          "description": "本科期间课程设计、实验与工程练习的整理入口。",
+          "links": [
+            {
+              "type": "github",
+              "href": "https://github.com/TimeMachineDMC/Code11982"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,25 +1,29 @@
 ---
+import type { IconsType } from 'astro-pure/types'
 import { Button, Icon } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
 
-const links = [
-  {
-    title: 'GitHub',
-    description: 'Code, experiments, and project repositories.',
-    href: 'https://github.com/TimeMachineDMC',
-    icon: 'github'
-  },
-  {
-    title: 'RSS',
-    description: 'Subscribe to future writing from this site.',
-    href: '/rss.xml',
-    icon: 'rss'
-  }
-] as const
+import linksContent from '../../../content-site/links.json'
+
+type LinkItem = {
+  title: string
+  description: string
+  href: string
+  icon: IconsType
+}
+
+type LinkAction = {
+  title: string
+  href: string
+  variant: 'ahead' | 'back'
+}
+
+const links = linksContent.links as LinkItem[]
+const actions = linksContent.actions as LinkAction[]
 ---
 
-<PageLayout title='Links'>
-  <p>Only my own public links are listed here.</p>
+<PageLayout title={linksContent.title}>
+  {linksContent.intro.map((paragraph) => <p>{paragraph}</p>)}
 
   <div class='not-prose mt-6 grid gap-3 sm:grid-cols-2'>
     {
@@ -44,7 +48,11 @@ const links = [
     }
   </div>
 
-  <div class='not-prose mt-8'>
-    <Button title='Back home' href='/' variant='back' />
+  <div class='not-prose mt-8 flex flex-wrap gap-3'>
+    {
+      actions.map((action) => (
+        <Button title={action.title} href={action.href} variant={action.variant} />
+      ))
+    }
   </div>
 </PageLayout>

@@ -1,0 +1,25 @@
+{
+  "title": "Links",
+  "intro": ["Only my own public links are listed here."],
+  "links": [
+    {
+      "title": "GitHub",
+      "description": "Code, experiments, and project repositories.",
+      "href": "https://github.com/TimeMachineDMC",
+      "icon": "github"
+    },
+    {
+      "title": "RSS",
+      "description": "Subscribe to future writing from this site.",
+      "href": "/rss.xml",
+      "icon": "rss"
+    }
+  ],
+  "actions": [
+    {
+      "title": "Back home",
+      "href": "/",
+      "variant": "back"
+    }
+  ]
+}

@@ -2,55 +2,39 @@
 import PageLayout from '@/layouts/CommonPage.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
 
-const headings = [
-  { depth: 2, slug: 'research', text: 'Research' },
-  { depth: 2, slug: 'coursework', text: 'Coursework' }
-]
+import projectsContent from '../../../content-site/projects.json'
+
+type ProjectGroup = {
+  id: string
+  title: string
+  projects: {
+    image?: string
+    name: string
+    description: string
+    links: {
+      type: string
+      href: string
+    }[]
+  }[]
+}
+
+const groups = projectsContent.groups as ProjectGroup[]
+const headings = groups.map((group) => ({
+  depth: 2,
+  slug: group.id,
+  text: group.title
+}))
 ---
 
-<PageLayout title='Projects' {headings}>
-  <p>
-    项目总览。
-  </p>
+<PageLayout title={projectsContent.title} {headings}>
+  {projectsContent.intro.map((paragraph) => <p>{paragraph}</p>)}
 
-  <h2 id='research'>Research</h2>
-  <ProjectSection
-    projects={[
-      {
-        image: 'LinkerHand.png',
-        name: 'EgoDex-Tac',
-        description: '基于 H-RDT 框架与 EgoDex 模型，探索机械臂与灵巧手的协同控制。',
-        links: [{ type: 'github', href: 'https://github.com/TimeMachineDMC/TBC' }]
-      },
-      {
-        image: 'AutoVisionCartX.png',
-        name: 'AutoVisionCart X',
-        description: '基于 YOLOv8 和 Whisper 的多目标识别与自动驾驶车项目。',
-        links: [
-          {
-            type: 'github',
-            href: 'https://github.com/TimeMachineDMC/AutoVisionCartX-NUS25summer'
-          }
-        ]
-      },
-      {
-        image: 'Justitia.png',
-        name: 'Justitia',
-        description: '为法律与金融分析设计的 RAG 架构模型。',
-        links: [{ type: 'github', href: 'https://github.com/TimeMachineDMC/zyd-web' }]
-      }
-    ]}
-  />
-
-  <h2 id='coursework'>Coursework</h2>
-  <ProjectSection
-    projects={[
-      {
-        image: '4.avif',
-        name: 'Code11982',
-        description: '本科期间课程设计、实验与工程练习的整理入口。',
-        links: [{ type: 'github', href: 'https://github.com/TimeMachineDMC/Code11982' }]
-      }
-    ]}
-  />
+  {
+    groups.map((group) => (
+      <>
+        <h2 id={group.id}>{group.title}</h2>
+        <ProjectSection projects={group.projects} />
+      </>
+    ))
+  }
 </PageLayout>

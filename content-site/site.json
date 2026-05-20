@@ -1,0 +1,79 @@
+{
+  "title": "Danil's Ink",
+  "author": "𝑫𝒂𝒏𝒊𝒍",
+  "description": "Embodied AI & LLM Researcher",
+  "favicon": "/favicon/avatar.ico",
+  "socialCard": "/images/social-card.png",
+  "logo": {
+    "src": "/src/assets/avatar.png",
+    "alt": "Avatar"
+  },
+  "locale": {
+    "lang": "zh-CN",
+    "attrs": "zh-CN",
+    "dateLocale": "zh-CN",
+    "dateOptions": {
+      "day": "numeric",
+      "month": "long",
+      "year": "numeric"
+    }
+  },
+  "header": {
+    "menu": [
+      {
+        "title": "Blog",
+        "link": "/blog/"
+      },
+      {
+        "title": "Projects",
+        "link": "/projects/"
+      },
+      {
+        "title": "Life",
+        "link": "/life/"
+      },
+      {
+        "title": "Links",
+        "link": "/links/"
+      },
+      {
+        "title": "About",
+        "link": "/about/"
+      }
+    ]
+  },
+  "footer": {
+    "year": "© {year}",
+    "links": [
+      {
+        "title": "Site Policy",
+        "link": "/terms/",
+        "pos": 2
+      }
+    ],
+    "credits": false,
+    "social": [
+      {
+        "icon": "github",
+        "label": "GitHub",
+        "href": "https://github.com/TimeMachineDMC"
+      },
+      {
+        "icon": "rss",
+        "label": "RSS",
+        "href": "/rss.xml"
+      }
+    ]
+  },
+  "content": {
+    "externalLinks": {
+      "content": " ↗",
+      "properties": {
+        "style": "user-select:none"
+      }
+    },
+    "blogPageSize": 8,
+    "share": ["weibo", "x", "bluesky"]
+  },
+  "quote": "这一路都是风景，我穿越森林灯红酒绿"
+}
