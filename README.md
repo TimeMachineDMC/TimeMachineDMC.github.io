@@ -1,99 +1,179 @@
-# Astro Theme Pure
+# Danil's Ink 个人主页维护指南
 
-English | [简体中文](./README-zh-CN.md)
+这是 `TimeMachineDMC/timemachinedmc.github.io` 的 GitHub Pages 个人主页仓库。网站使用 Astro 构建，日常维护目标是：尽量只改内容文件，不写 HTML。
 
-A simple, fast and powerful blog & document theme built by Astro.
+## 快速开始
 
-[![GitHub deployments](https://img.shields.io/github/deployments/cworld1/astro-theme-pure/production?style=flat&logo=vercel&label=vercel)](https://astro-pure.js.org/)
-[![NPM Version](https://img.shields.io/npm/v/astro-pure?logo=npm&style=flat)](https://www.npmjs.com/package/astro-pure)
-[![GitHub Release](https://img.shields.io/github/v/release/cworld1/astro-theme-pure?include_prereleases&style=flat&label=template)](https://github.com/cworld1/astro-theme-pure/releases)
-[![GitHub License](https://img.shields.io/github/license/cworld1/astro-theme-pure?style=flat)](https://github.com/cworld1/astro-theme-pure/blob/main/LICENSE)
+进入仓库：
 
-![image](./.github/assets/header.webp)
-![image](./.github/assets/body.webp)
-
-> [!NOTE]
-> Known issues: Header & customize options is still under development (template exposed still).
-
-## Introduction
-
-Checkout [Demo Site →](https://astro-pure.js.org/)
-
-### :fire: Features
-
-- [x] :rocket: Fast & high performance
-- [x] :star: Simple & clean design
-- [x] :iphone: Responsive design
-- [x] :mag: Full-site search built with [pagefind](https://pagefind.app/)
-- [x] :world_map: Sitemap & RSS feed
-- [x] :spider_web: SEO-friendly
-- [x] :book: TOC (table of contents)
-- [x] :framed_picture: Dynamic open graph generation for posts
-- [x] :framed_picture: Mediumzoom lightbox for images
-
-### :package: Components
-
-Theme includes a lot of components, which can not only be used in the theme, but also in other astro projects.
-
-> For other astro projects, UnoCSS is required. See [Package README](https://github.com/cworld1/astro-theme-pure/blob/main/packages/pure/README.md#use-with-common-astro-project) for more details.
-
-- Basic components: `Aside`, `Tabs`, `Timeline`, `Steps`, `Spoiler`...
-- Advanced components: `GithubCard`, `LinkPreview`, `Quote`, `QRCode`...
-
-### :white_check_mark: Lighthouse score
-
-[![lighthouse-score](./.github/assets/lighthouse-score.png)](https://pagespeed.web.dev/analysis/https-cworld-top/o229zrt5o4?form_factor=mobile&hl=en)
-
-## Documentation
-
-[Docs](https://astro-pure.js.org/docs) | [Showcase](https://github.com/cworld1/astro-theme-pure/issues/10)
-
-## Package
-
-See [astro-theme-pure](https://www.npmjs.com/package/astro-pure) on npm.
-
-## Local development
-
-Environment requirements:
-
-- [Nodejs](https://nodejs.org/): 18.0.0+
-
-Clone the repository:
-
-```shell
-git clone https://github.com/cworld1/astro-theme-pure.git
-cd astro-theme-pure
+```bash
+cd /Users/metthewshih/Code/timemachinedmc.github.io
 ```
 
-Useful commands:
+本地预览：
 
-```shell
-# Install dependencies
-bun install
-# Start the dev server
-bun dev
-# Build the project
-bun run build
-# Preview (after the build)
-bun preview
-# Create a new post
-bun pure new
+```bash
+npm run dev -- --host 127.0.0.1
 ```
 
-## Contributions
+打开：
 
-To spend more time coding and less time fiddling with whitespace, this project uses code conventions and styles to encourage consistency. Code with a consistent style is easier (and less error-prone!) to review, maintain, and understand.
+```text
+http://127.0.0.1:4321/
+```
 
-## Thanks
+构建检查：
 
-- [Astro Cactus](https://github.com/chrismwilliams/astro-theme-cactus)
-- [Astro Resume](https://github.com/srleom/astro-theme-resume)
-- [Starlight](https://github.com/withastro/starlight)
+```bash
+npm run build
+```
 
-Other third party references are on [Docs#Contributions](https://astro-pure.js.org/docs/advanced/about). Appreciate for all open source libraries.
+## 日常修改入口
 
-## License
+整站内容主要放在：
 
-This project is licensed under the Apache 2.0 License.
+```text
+content-site/
+```
 
-[![Star History Chart](https://api.star-history.com/svg?repos=cworld1/astro-theme-pure&type=Date)](https://star-history.com/#cworld1/astro-theme-pure&Date)
+一般不要为了改文字、链接、项目、生活分区去改 `src/pages/*.astro`。
+
+常用文件：
+
+- `content-site/site.json`：网站标题、作者、头像、导航栏、页脚、社交链接。
+- `content-site/home.json`：主页 About、Education、Music、精选 Projects、Skills。
+- `content-site/about.json`：About 页面内容。
+- `content-site/projects.json`：Projects 页面项目分组和项目卡片。
+- `content-site/life.json`：Life 页面，设备、音乐、时尚、文学、电影、游戏、品牌、画廊等。
+- `content-site/links.json`：Links 页面，只放自己的公开链接。
+
+## 修改后发布
+
+改完 `content-site/` 或 Blog 后，运行：
+
+```bash
+npm run publish -- "Update site content"
+```
+
+这个命令会自动完成：
+
+1. 导入 `content-inbox/blog/` 里的新 Blog Markdown。
+2. 校验 `content-site/*.json`。
+3. 构建网站。
+4. 创建 Git commit。
+5. 推送到 GitHub。
+
+只想先检查内容格式：
+
+```bash
+npm run content:check
+```
+
+## JSON 修改规则
+
+`content-site/*.json` 必须是合法 JSON：
+
+- 字符串用双引号。
+- 不能写注释。
+- 数组或对象最后一项后面不能多逗号。
+- 图片路径要指向真实文件。
+
+添加 Life 卡片示例：
+
+```json
+{
+  "heading": "香水",
+  "subheading": "记录气味、场景和记忆。",
+  "date": "Template · Scent notes"
+}
+```
+
+最稳的做法：复制已有的一整块，改文字、链接、图片名，然后运行：
+
+```bash
+npm run content:check
+```
+
+## 新增 Blog
+
+创建新文章草稿：
+
+```bash
+npm run new:blog -- "文章标题"
+```
+
+然后编辑生成的 Markdown 文件：
+
+```text
+content-inbox/blog/
+```
+
+写完后发布：
+
+```bash
+npm run publish -- "Add new blog post"
+```
+
+也可以直接在 `src/content/blog/` 写正式 Blog。未完成的文章保持：
+
+```yaml
+draft: true
+```
+
+准备发布时改成：
+
+```yaml
+draft: false
+```
+
+## 页面路径
+
+当前主要页面：
+
+- `/`
+- `/blog/`
+- `/projects/`
+- `/life/`
+- `/links/`
+- `/about/`
+
+项目使用 trailing slash，所以本地和线上访问子页面时建议带 `/`，例如 `/life/`，不要写成 `/life`。
+
+## 什么时候需要改代码
+
+只改内容：改 `content-site/` 或 Markdown。
+
+需要改代码的情况：
+
+- 新增一种完全不同的页面布局。
+- 新增新的数据渲染方式。
+- 改组件样式或交互。
+- 增加自动化脚本能力。
+
+代码主要在：
+
+```text
+src/
+scripts/
+```
+
+不确定时，先改内容文件并运行 `npm run content:check`。如果检查通过但页面效果不是想要的，再考虑改代码。
+
+## 常用命令
+
+```bash
+# 本地开发
+npm run dev -- --host 127.0.0.1
+
+# 校验内容 JSON
+npm run content:check
+
+# 构建网站
+npm run build
+
+# 新建 Blog 草稿
+npm run new:blog -- "文章标题"
+
+# 发布并推送
+npm run publish -- "Update site content"
+```
